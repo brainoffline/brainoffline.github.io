@@ -1,0 +1,100 @@
+<!doctype html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <title>Chromecast Receiver</title>
+    <link rel="stylesheet" href="styles/main.css">
+</head>
+<body>
+<div id="player">
+    <div class="video-wrapper" style="display:none">
+        <video></video>
+    </div>
+</div>
+
+<script type="text/javascript" src="//www.gstatic.com/cast/sdk/libs/receiver/2.0.0/cast_receiver.js"></script>
+<script type="text/javascript" src="//www.gstatic.com/cast/sdk/libs/mediaplayer/1.0.0/media_player.js"></script>
+
+<script src="scripts/main.js"></script>
+<script>
+    /*
+     * Put overrides here for durations of state display
+     */
+
+    //cc.config.timeOutSeconds.idle = 5*60;
+    //cc.config.timeOutSeconds.mediaLoading = 60;
+    //cc.config.timeOutSeconds.startBuffering = 2;
+    //cc.config.timeOutSeconds.stillBuffering = 3;
+    //cc.config.timeOutSeconds.extendBuffering = 30;
+    //cc.config.timeOutSeconds.paused = 5;
+    //cc.config.timeOutSeconds.stillPaused = 5*60;
+    //cc.config.timeOutSeconds.playing = 5;
+    //cc.config.timeOutSeconds.error = 5*60;
+
+    /*
+     * Put overrides here for Resources
+     */
+
+    //cc.config.resources.loadingIcon = './image/loading.gif';
+    //cc.config.resources.bufferingIcon = './image/loading.gif';
+    //cc.config.resources.backgroundImage = './image/background.png';
+    //cc.config.resources.pauseIcon = './image/paused.png';
+    //cc.config.resources.logo = './image/logo.png';
+    //cc.config.resources.readyMessage = 'Ready to cast';
+
+    /*
+     * Put overrides here for Error Messages from the Video Element itself
+     */
+
+    //cc.config.resources.errorSources.video.errorCodes[100] ='An error occurred during playback, please try again.';
+    //cc.config.resources.errorSources.video.errorCodes[200] = 'Content playback has stopped due to network conditions.';
+    //cc.config.resources.errorSources.video.errorCodes[300] = 'Unable to load external text track.';
+    //cc.config.resources.errorSources.video.errorCodes.unknown ='An error occurred during playback, please try again.';
+
+    /*
+     * Put overrides here for Error Messages from the License Server
+     */
+
+    //cc.config.resources.errorSources.license.errorCodes[100] = 'We were unable to acquire the license.';
+    //cc.config.resources.errorSources.license.errorCodes.unknown = 'We were unable to acquire the license.';
+
+    /*
+     * Put overrides here for Error Messages from the Core API
+     */
+
+    //cc.config.resources.errorSources.api.errorCodes[1001] = 'This title is not available for this account.';
+    //cc.config.resources.errorSources.api.errorCodes[1002] = 'This title is not available for this account.';
+    //cc.config.resources.errorSources.api.errorCodes[1004] = 'This title is not available for this account.';
+    //cc.config.resources.errorSources.api.errorCodes[1005] = 'This title is not available for this account.';
+    //cc.config.resources.errorSources.api.errorCodes[920] = 'This title is not available for this account.';
+    //cc.config.resources.errorSources.api.errorCodes[964] = 'This title is not available for this account.';
+
+    //cc.config.resources.errorSources.api.errorCodes[1050] = 'Your account has reached its maximum stream limit.';
+    //cc.config.resources.errorSources.api.errorCodes[994] = 'Your account has reached its maximum stream limit.';
+
+    //cc.config.resources.errorSources.api.errorCodes[109] = 'Your session has expired, please login again.';
+    //cc.config.resources.errorSources.api.errorCodes[114] = 'Your session has expired, please login again.';
+
+    //cc.config.resources.errorSources.api.errorCodes.unknown = 'A network error occurred trying to reach the Core API, please try again.';
+
+</script>
+
+<script>
+    //pre-load the images.
+    var images = [];
+    (function() {
+        for (var i = 0, ln = arguments.length; i <ln; i++) {
+            images[i] = new Image();
+            images[i].src = arguments[i];
+        }
+    })(
+        cc.config.resources.loadingIcon,
+        cc.config.resources.logo,
+        cc.config.resources.backgroundImage,
+        cc.config.resources.bufferingIcon
+    );
+    cc.playbackEvents.preLoad();
+</script>
+
+</body>
+</html>
