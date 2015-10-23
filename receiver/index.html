@@ -1,0 +1,88 @@
+<!doctype html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <title>Chromecast Receiver</title>
+    <!-- build:css styles/main.min.css -->
+    <link rel="stylesheet" href="styles/main.css">
+    <!-- /build -->
+</head>
+<body>
+<div id="player">
+    <div class="video-wrapper" style="display:none">
+        <video></video>
+    </div>
+</div>
+
+<div>
+
+
+</div>
+
+<script type="text/javascript" src="//www.gstatic.com/cast/sdk/libs/receiver/2.0.0/cast_receiver.js"></script>
+<script type="text/javascript" src="//www.gstatic.com/cast/sdk/libs/mediaplayer/1.0.0/media_player.js"></script>
+
+<!-- build:js scripts/vendorModified/jquery.min.js -->
+<script type="text/javascript" src="scripts/vendorModified/jquery.js"></script>
+<!-- /build -->
+<script type="text/javascript" src="scripts/ascendon.service-0.2.0.min.js"></script>
+<!-- build:js scripts/ascendon.cast.min.js -->
+<script type="text/javascript" src="scripts/util.js"></script>
+<script type="text/javascript" src="scripts/main.js"></script>
+<script type="text/javascript" src="scripts/config.js"></script>
+<script type="text/javascript" src="scripts/controller.js"></script>
+<script type="text/javascript" src="scripts/urlValidator.js"></script>
+<script type="text/javascript" src="scripts/castEvents.js"></script>
+<script type="text/javascript" src="scripts/playbackEvents.js"></script>
+<!-- /build -->
+<script type="text/javascript" src="scripts/resources.js"></script>
+<!-- build:remove -->
+<script>
+
+
+    /*
+     * Put overrides here for durations of state display
+     */
+
+    //cc.config.timeOutSeconds.idle = 5*60;
+    //cc.config.timeOutSeconds.mediaLoading = 60;
+    //cc.config.timeOutSeconds.startBuffering = 2;
+    //cc.config.timeOutSeconds.stillBuffering = 3;
+    //cc.config.timeOutSeconds.extendBuffering = 30;
+    //cc.config.timeOutSeconds.paused = 5;
+    //cc.config.timeOutSeconds.stillPaused = 5*60;
+    //cc.config.timeOutSeconds.playing = 5;
+    //cc.config.timeOutSeconds.error = 5*60;
+
+    /*
+     * Put overrides here for Resources
+     */
+
+    //cc.config.resources.loadingIcon = './image/loading.gif';
+    //cc.config.resources.bufferingIcon = './image/loading.gif';
+    //cc.config.resources.backgroundImage = './image/background.png';
+    //cc.config.resources.pauseIcon = './image/paused.png';
+    //cc.config.resources.logo = './image/logo.png';
+    //cc.config.resources.readyMessage = 'Ready to cast';
+
+</script>
+<!-- /build -->
+<script>
+    //pre-load the images.
+    var images = [];
+    (function() {
+        for (var i = 0, ln = arguments.length; i <ln; i++) {
+            images[i] = new Image();
+            images[i].src = arguments[i];
+        }
+    })(
+        cc.config.resources.loadingIcon,
+        cc.config.resources.logo,
+        cc.config.resources.backgroundImage,
+        cc.config.resources.bufferingIcon
+    );
+    cc.playbackEvents.preLoad();
+</script>
+
+</body>
+</html>
